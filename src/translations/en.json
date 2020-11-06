@@ -3,5 +3,9 @@
   "not_found": "Page Not Found",
   "notFound.link.ItemCta": "Home",
   "CookiesAcceptButtonText": "Got It",
-  "CookiesMessage": "We use cookies to understand how you use our site and to improve your experience. By clicking “Got it” or continuing to browse the site, you are agreeing to our use of cookies."
+  "CookiesMessage": "We use cookies to understand how you use our site and to improve your experience. By clicking “Got it” or continuing to browse the site, you are agreeing to our use of cookies.",
+  "HeaderLinks.Button.login": "Login",
+  "HeaderLinks.Button.signUp": "Sign Up",
+  "HeaderLinks.link.findDevelopers": "find Developers",
+  "HeaderLinks.link.Resources": "Resources"
 }
