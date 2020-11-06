@@ -1,5 +1,5 @@
 import React from 'react'
-import {useStyles} from '../Styles'
+import {useStyles} from './Styles'
 import {FormattedMessage} from 'react-intl'
 import {CopyrightRounded, Facebook, Twitter, LinkedIn} from '@material-ui/icons'
 
