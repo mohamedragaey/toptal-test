@@ -7,6 +7,7 @@ import ScrollTop from '../ScrollTop/ScrollTop'
 import {Routes} from '../../routes'
 import {useStyles} from './Styles'
 import Header from '../Header'
+import Footer from '../Footer'
 
 const Layout = () => {
   const classes = useStyles()
@@ -19,6 +20,7 @@ const Layout = () => {
       <main className={classes.content}>
         <Routes/>
       </main>
+      <Footer/>
       <ScrollTop scrollStepInPx="50" delayInMs="0"/>
       <CookieConsent
         location="bottom"

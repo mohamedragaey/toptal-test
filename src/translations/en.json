@@ -7,5 +7,6 @@
   "HeaderLinks.Button.login": "Login",
   "HeaderLinks.Button.signUp": "Sign Up",
   "HeaderLinks.link.findDevelopers": "find Developers",
-  "HeaderLinks.link.Resources": "Resources"
+  "HeaderLinks.link.Resources": "Resources",
+  "Footer.copyRights.text": "Copyright 2010 - 2018 Toptal, LLC"
 }
