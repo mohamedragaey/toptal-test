@@ -4,7 +4,6 @@ import rtl from 'jss-rtl'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {createGenerateClassName, createMuiTheme} from '@material-ui/core/styles'
 import {StylesProvider, ThemeProvider as MuiThemeProvider, jssPreset} from '@material-ui/styles'
-import {LocalStorageService} from './Services/LocalStorageService'
 import Configuration from './Services/Api/Configuration'
 
 // Configure JSS
@@ -13,34 +12,17 @@ const generateClassName = createGenerateClassName()
 let {DefaultFont, DefaultDirection} = Configuration
 
 const ThemeProvider = ({children}) => {
-  const [font, setFont] = React.useState(DefaultFont)
-  const [storageDirection, setStorageDirection] = React.useState(DefaultDirection)
-
-  let isSubscribed = false
-  React.useEffect(() => {
-    // eslint-disable-next-line
-    isSubscribed = true
-    LocalStorageService.get('ToptalFontName').then((storageFont) => {
-      if (isSubscribed) {
-        setFont(storageFont)
-      }
-    })
-    LocalStorageService.get('ToptalDirection').then((storageDirection) => {
-      if (isSubscribed) {
-        setStorageDirection(storageDirection)
-      }
-    })
-    return () => isSubscribed = false
-  }, [])
-
   let theme = createMuiTheme({
-    direction: storageDirection,
+    direction: DefaultDirection,
     palette: {
       primary: {
         light: '#438fce',
         main: '#3a649e',
         dark: '#00258c',
         contrastText: '#000'
+      },
+      action: {
+        active: '#496ea6'
       },
       secondary: {
         light: '#edf6fe',
@@ -74,7 +56,7 @@ const ThemeProvider = ({children}) => {
       }
     },
     typography: {
-      'fontFamily': font,
+      'fontFamily': DefaultFont,
       'htmlFontSize': 16,
       'fontSize': 14,
       'fontWeightLight': 300,
