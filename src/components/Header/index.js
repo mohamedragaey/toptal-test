@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <AppBar position="fixed" className={classes.header} id='header'>
       <Toolbar className={classes.headerToolbar}>
-        <Container maxWidth="lg">
+        <Container maxWidth={false}>
           <Grid container justify='space-between' alignItems='center'>
             <Logo/>
             <HeaderLinks/>
