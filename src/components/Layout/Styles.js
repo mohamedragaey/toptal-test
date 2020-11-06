@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
     'a': {
       transition: 'all 0.3s ease-in-out',
       '&:hover, &:focus': {
-        color: theme.palette.secondary.main
+        color: theme.palette.action.hover
       }
     },
     'button': {

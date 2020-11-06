@@ -8,5 +8,17 @@
   "HeaderLinks.Button.signUp": "Sign Up",
   "HeaderLinks.link.findDevelopers": "find Developers",
   "HeaderLinks.link.Resources": "Resources",
-  "Footer.copyRights.text": "Copyright 2010 - 2018 Toptal, LLC"
+  "Footer.copyRights.text": "Copyright 2010 - 2018 Toptal, LLC",
+  "Footer.FooterColumn.title.highestDemandTalents": "Highest Demand Talents",
+  "Footer.FooterColumn.title.about": "About",
+  "Footer.FooterColumn.title.hire": "Hire a top 3% Talent",
+  "footerLinks.link.iosDeveloper": "IOS Developer",
+  "footerLinks.link.frontEndDeveloper": "Front-End Developer",
+  "footerLinks.link.UXDesigner": "UX Designer",
+  "footerLinks.link.UIDesigner": "UI Designer",
+  "footerLinks.link.financialModelingConsultants": "Financial Modeling Consultants",
+  "footerLinks.link.interimCFOs": "Interim CFOs",
+  "footerLinks.link.contactUs": "Contact Us",
+  "footerLinks.link.pressCenter": "Press Center",
+  "footerLinks.link.careers": "Careers"
 }

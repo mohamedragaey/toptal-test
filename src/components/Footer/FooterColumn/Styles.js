@@ -1,12 +1,13 @@
 import {makeStyles} from '@material-ui/core/styles'
 
 export const useStyles = makeStyles((theme) => ({
-  footerWrapper: {
-    borderTop: `1px solid ${theme.palette.grey[300]}`
+  footerColumnWrapper: {},
+  footerColumnTitle: {
+    fontWeight: theme.typography.fontWeightRegular
   },
-  footerContent: {
+  footerColumnContent: {
     display: 'flex',
-    padding: theme.spacing(3, 0)
+    flexDirection: 'column'
   },
   footerLink: {
     color: theme.palette.action.active,
@@ -15,5 +16,10 @@ export const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     marginBottom: theme.spacing(1),
     fontSize: theme.typography.pxToRem(16)
+  },
+  signUpButton: {
+    color: theme.palette.common.white,
+    textTransform: 'capitalize',
+    fontWeight: theme.typography.fontWeightRegular
   }
 }))

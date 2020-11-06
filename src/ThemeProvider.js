@@ -22,7 +22,8 @@ const ThemeProvider = ({children}) => {
         contrastText: '#000'
       },
       action: {
-        active: '#496ea6'
+        active: '#496ea6',
+        hover:'#00258c'
       },
       secondary: {
         light: '#edf6fe',
