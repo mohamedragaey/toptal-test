@@ -7,10 +7,10 @@ import enMessages from './../../translations/en.json'
 import {LocalStorageService} from '../LocalStorageService'
 
 class Configuration {
-  static BASE_URL = 'https://toptalui.docs.apiary.io/#reference/0/'
-  static specialisation_collection_endpoint = '/specialisation-collection/list-all-specialisations'
-  static skills_collection_endpoint = '/skills-collection/list-all-skills'
-  static developers_collection_endpoint = '/developers-collection/get-developers'
+  static BASE_URL = 'https://private-anon-b82ed30a63-toptalui.apiary-mock.com'
+  static specialisation_collection_endpoint = '/categories/specialisations'
+  static skills_collection_endpoint = '/categories/skills'
+  static developers_collection_endpoint = '/developers'
 
   static Local = LocalStorageService.get('ToptalAppLanguage')
   static DefaultLocale = 'en'

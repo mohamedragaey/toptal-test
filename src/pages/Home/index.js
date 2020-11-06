@@ -1,6 +1,7 @@
 import React from 'react'
 import {SEO} from '../../components/Seo/seo'
 import {home} from '../../utils/pages-meta.json'
+import SearchPageContent from '../../components/SearchPageContent'
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
            image={home.image}
            description={home.description}
       />
-      <h1 style={{textAlign: 'center'}}>Welcome To Toptal search</h1>
+      <SearchPageContent/>
     </>
   )
 }

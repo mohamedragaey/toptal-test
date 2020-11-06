@@ -8,7 +8,7 @@ export const SearchLoader = ({ loading }) => {
     <div className={classes.SearchLoaderWrapper}>
       <MagicSpinner
         size={100}
-        color="#29cc8b"
+        color="#3a649e"
         loading={loading}
       />
     </div>

@@ -51,7 +51,7 @@ const ThemeProvider = ({children}) => {
         dark: '#FF8412'
       },
       text: {
-        primary: '#171725',
+        primary: '#4e4e4e',
         secondary: '#92929d',
         hint: '#98a9bc'
       }

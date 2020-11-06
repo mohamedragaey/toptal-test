@@ -46,6 +46,17 @@ export const useStyles = makeStyles((theme) => ({
     '.MuiBackdrop-root': {
       backgroundColor: fade(theme.palette.common.black, 0.32),
       backdropFilter: 'blur(2px)'
+    },
+    '.MuiPaginationItem-page.Mui-selected': {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.main,
+      '&:hover,&.Mui-focusVisible': {
+        backgroundColor: theme.palette.primary.main
+      }
+    },
+    '.MuiPaginationItem-page:hover': {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.main
     }
   },
   pageWrapper: {

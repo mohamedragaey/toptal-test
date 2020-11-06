@@ -1,22 +1,31 @@
 import React, {createContext} from 'react'
+import SearchServices from './Services/Consumers/SearchServices'
+import Configuration from './Services/Api/Configuration'
 
 const GeneralContext = createContext({})
 
 const GeneralProvider = ({children}) => {
-  const [mobileMenuState, setMobileMenuState] = React.useState(false)
+  const [developersList, setDevelopersList] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
 
-  const toggleMobileMenuDrawer = (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return
-    }
-    setMobileMenuState(!mobileMenuState)
-  }
+  const getSearchResult = React.useCallback(() => {
+    setLoading(true)
+    SearchServices.Listing(Configuration.developers_collection_endpoint).then((result) => {
+      if (!!result) {
+        setLoading(false)
+        setDevelopersList(result.data)
+      }
+    })
+  }, [])
+
+  React.useEffect(() => {
+    getSearchResult()
+  }, [])
 
   return (
     <GeneralContext.Provider value={{
-      mobileMenuState,
-      setMobileMenuState,
-      toggleMobileMenuDrawer
+      loading,
+      developersList
     }}>
       {children}
     </GeneralContext.Provider>
