@@ -6,12 +6,23 @@ import ThemeProvider from './ThemeProvider'
 import Layout from './components/Layout'
 import * as serviceWorker from './serviceWorker'
 import {BrowserRouter as Router} from 'react-router-dom'
+import {IntlProvider} from 'react-intl'
+import Configuration from './Services/Api/Configuration'
+
+let {DefaultLocale, DefaultMessage} = Configuration
 
 ReactDOM.render(
   <Router>
-    <ThemeProvider>
-      <Layout/>
-    </ThemeProvider>
+    <IntlProvider
+      key={DefaultLocale}
+      locale={DefaultLocale}
+      messages={DefaultMessage}
+      defaultLocale={DefaultLocale}
+    >
+      <ThemeProvider>
+        <Layout/>
+      </ThemeProvider>
+    </IntlProvider>
   </Router>,
   document.getElementById('root')
 )
