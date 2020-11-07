@@ -10,7 +10,7 @@ const SearchPageContent = () => {
   const classes = useStyles()
   return (
     <GeneralProvider>
-      <GeneralConsumer>{({loading, developersList}) => (
+      <GeneralConsumer>{({loading, developersList, page, itemsPerPage, noOfPages, handlePaginationChange}) => (
         <Container maxWidth={false}>
           <Grid container spacing={2} justify={'space-between'}>
             <Grid item xs={12} sm={12} md={3}>
@@ -19,9 +19,8 @@ const SearchPageContent = () => {
             <Grid item xs={12} sm={12} md={9}>
               <h1>Top full-stack developers in United Stats</h1>
               {!!loading && <SearchLoader/>}
-              {developersList.map((developer, index) => (
+              {developersList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((developer) => (
                 <DeveloperCard
-                  index={index}
                   key={developer.id}
                   id={developer.id}
                   category={developer.category}
@@ -36,7 +35,14 @@ const SearchPageContent = () => {
                 />
               ))}
               <div className={classes.paginationWrapper}>
-                <Pagination count={10} variant="outlined" shape="rounded"/>
+                <Pagination
+                  shape="rounded"
+                  variant="outlined"
+                  page={page}
+                  defaultPage={1}
+                  count={noOfPages}
+                  onChange={handlePaginationChange}
+                />
               </div>
             </Grid>
           </Grid>

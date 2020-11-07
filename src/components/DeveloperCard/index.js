@@ -5,7 +5,7 @@ import {Fade} from 'react-reveal'
 import {FormattedMessage} from 'react-intl'
 import {Button} from '@material-ui/core'
 
-const DeveloperCard = ({index, id, category, bio, city, country, first_name, last_name, generalBio, photoUrl, skills}) => {
+const DeveloperCard = ({id, category, bio, city, country, first_name, last_name, generalBio, photoUrl, skills}) => {
   const classes = useStyles()
   return (
     <Fade bottom>

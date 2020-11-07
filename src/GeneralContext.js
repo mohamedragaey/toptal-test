@@ -7,6 +7,9 @@ const GeneralContext = createContext({})
 const GeneralProvider = ({children}) => {
   const [developersList, setDevelopersList] = React.useState([])
   const [loading, setLoading] = React.useState(false)
+  const [page, setPage] = React.useState(1)
+  const itemsPerPage = 10
+  const noOfPages = Math.ceil(developersList.length / itemsPerPage)
 
   const getSearchResult = React.useCallback(() => {
     setLoading(true)
@@ -20,12 +23,22 @@ const GeneralProvider = ({children}) => {
 
   React.useEffect(() => {
     getSearchResult()
-  }, [])
+  }, [getSearchResult])
+
+  const handlePaginationChange = (event, value) => {
+    setPage(value)
+    window.scrollTo(0, 0)
+  }
 
   return (
     <GeneralContext.Provider value={{
       loading,
-      developersList
+      page,
+      setPage,
+      noOfPages,
+      itemsPerPage,
+      developersList,
+      handlePaginationChange
     }}>
       {children}
     </GeneralContext.Provider>
