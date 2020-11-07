@@ -13,9 +13,10 @@ const GeneralProvider = ({children}) => {
   const [developersSkillsLoading, setDevelopersSkillsLoading] = React.useState(false)
   const [developersTypesCheck, setDevelopersTypesCheck] = React.useState([])
   const [developersSkillsCheck, setDevelopersSkillsCheck] = React.useState([])
+  const [filteredSkillsList, setFilteredSkillsList] = React.useState([])
   const [page, setPage] = React.useState(1)
   const itemsPerPage = 10
-  const noOfPages = Math.ceil(developersList.length / itemsPerPage)
+  const [noOfPages, setNoOfPages] = React.useState(Math.ceil(filteredSkillsList.length / itemsPerPage))
 
   const getSearchResult = React.useCallback(() => {
     setLoading(true)
@@ -58,21 +59,42 @@ const GeneralProvider = ({children}) => {
     window.scrollTo(0, 0)
   }
 
-  const handleDevelopersTypesChange = (element) => {
-    setDevelopersTypesCheck(
-      developersTypesCheck.includes(element)
-        ? developersTypesCheck.filter(c => c !== element)
-        : [...developersTypesCheck, element]
-    )
+  const handleDevelopersTypesChange = (title) => {
+    if (developersTypesCheck.includes(title)) {
+      const filterIndex = developersTypesCheck.indexOf(title)
+      const newFilter = [...developersTypesCheck]
+      newFilter.splice(filterIndex, 1)
+      setDevelopersTypesCheck(newFilter)
+    } else {
+      setDevelopersTypesCheck([...developersTypesCheck, title])
+    }
+
   }
 
-  const handleDevelopersSkillsChange = (element) => {
-    setDevelopersSkillsCheck(
-      developersSkillsCheck.includes(element)
-        ? developersSkillsCheck.filter(c => c !== element)
-        : [...developersSkillsCheck, element]
-    )
+  const handleDevelopersSkillsChange = (title) => {
+    if (developersSkillsCheck.includes(title)) {
+      const filterIndex = developersSkillsCheck.indexOf(title)
+      const newFilter = [...developersSkillsCheck]
+      newFilter.splice(filterIndex, 1)
+      setDevelopersSkillsCheck(newFilter)
+    } else {
+      setDevelopersSkillsCheck([...developersSkillsCheck, title])
+    }
   }
+
+  React.useEffect(() => {
+    if (developersSkillsCheck.length === 0 || developersSkillsCheck.length === (developersSkills.length + developersTypes.length)) {
+      setFilteredSkillsList(developersList)
+      setNoOfPages(Math.ceil(filteredSkillsList.length / itemsPerPage))
+    } else {
+      setFilteredSkillsList(developersList.filter((item => (
+        developersSkillsCheck.includes(item.skills[0].title) || developersSkillsCheck.includes(item.category)
+      ))))
+      setNoOfPages(Math.ceil(filteredSkillsList.length / itemsPerPage))
+    }
+    console.log('developersSkillsCheck....', developersSkillsCheck)
+
+  }, [developersSkillsCheck])
 
   return (
     <GeneralContext.Provider value={{
@@ -88,6 +110,7 @@ const GeneralProvider = ({children}) => {
       developersSkillsLoading,
       developersTypesCheck,
       developersSkillsCheck,
+      filteredSkillsList,
       handlePaginationChange,
       handleDevelopersTypesChange,
       handleDevelopersSkillsChange

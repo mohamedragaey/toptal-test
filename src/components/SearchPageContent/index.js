@@ -1,4 +1,5 @@
 import React from 'react'
+import {FormattedMessage} from 'react-intl'
 import {Container, Grid} from '@material-ui/core'
 import Pagination from '@material-ui/lab/Pagination'
 import {GeneralProvider, GeneralConsumer} from '../../GeneralContext'
@@ -11,7 +12,7 @@ const SearchPageContent = () => {
   const classes = useStyles()
   return (
     <GeneralProvider>
-      <GeneralConsumer>{({loading, developersList, page, itemsPerPage, noOfPages, handlePaginationChange}) => (
+      <GeneralConsumer>{({loading, page, itemsPerPage, noOfPages, handlePaginationChange, filteredSkillsList}) => (
         <Container maxWidth={false}>
           <Grid container spacing={2} justify={'space-between'}>
             <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
@@ -20,7 +21,7 @@ const SearchPageContent = () => {
             <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
               <h1>Top full-stack developers in United Stats</h1>
               {!!loading && <SearchLoader/>}
-              {developersList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((developer) => (
+              {!!filteredSkillsList && !!filteredSkillsList.length && filteredSkillsList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((developer) => (
                 <DeveloperCard
                   key={developer.id}
                   id={developer.id}
@@ -35,7 +36,9 @@ const SearchPageContent = () => {
                   skills={developer.skills}
                 />
               ))}
-              <div className={classes.paginationWrapper}>
+              {!loading && !!filteredSkillsList && !filteredSkillsList.length &&
+              <div className={classes.noResult}><FormattedMessage id='NoResultsFound'/></div>}
+              {!!filteredSkillsList && !!filteredSkillsList.length && <div className={classes.paginationWrapper}>
                 <Pagination
                   shape="rounded"
                   variant="outlined"
@@ -44,7 +47,7 @@ const SearchPageContent = () => {
                   count={noOfPages}
                   onChange={handlePaginationChange}
                 />
-              </div>
+              </div>}
             </Grid>
           </Grid>
         </Container>

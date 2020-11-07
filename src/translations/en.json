@@ -23,5 +23,6 @@
   "footerLinks.link.careers": "Careers",
   "DeveloperCard.Button.viewProfile": "View Profile",
   "AccordionSummary.heading.DeveloperType": "Developer Type:",
-  "AccordionSummary.heading.Skills": "Skills:"
+  "AccordionSummary.heading.Skills": "Skills:",
+  "NoResultsFound": "No Results Found"
 }

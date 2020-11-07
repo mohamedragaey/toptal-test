@@ -16,7 +16,7 @@ const SearchFilters = () => {
   const classes = useStyles()
 
   return (
-    <GeneralConsumer>{({developersTypesCheck, developersSkillsCheck, handleDevelopersTypesChange, handleDevelopersSkillsChange, developersTypes, developersSkills, developersTypesLoading, developersSkillsLoading}) => (
+    <GeneralConsumer>{({developersSkillsCheck, handleDevelopersSkillsChange, developersTypes, developersSkills, developersTypesLoading, developersSkillsLoading}) => (
       <div className={classes.root}>
         <Accordion defaultExpanded={true}>
           <AccordionSummary
@@ -37,8 +37,8 @@ const SearchFilters = () => {
                   control={<Checkbox
                     color="primary"
                     name={type.title}
-                    onChange={() => handleDevelopersTypesChange(type.id)}
-                    checked={developersTypesCheck.includes(type.id)}
+                    onChange={() => handleDevelopersSkillsChange(type.title)}
+                    checked={developersSkillsCheck.includes(type.title)}
                   />}
                   label={type.title}
                 />
@@ -64,8 +64,8 @@ const SearchFilters = () => {
                   control={<Checkbox
                     color="primary"
                     name={type.title}
-                    onChange={() => handleDevelopersSkillsChange(type.id)}
-                    checked={developersSkillsCheck.includes(type.id)}
+                    onChange={() => handleDevelopersSkillsChange(type.title)}
+                    checked={developersSkillsCheck.includes(type.title)}
                   />}
                   label={type.title}
                 />
