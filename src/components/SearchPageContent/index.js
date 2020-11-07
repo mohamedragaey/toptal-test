@@ -5,6 +5,7 @@ import {GeneralProvider, GeneralConsumer} from '../../GeneralContext'
 import {SearchLoader} from '../Loader/SearchLoader'
 import DeveloperCard from '../DeveloperCard'
 import {useStyles} from './Styles'
+import SearchFilters from '../SearchFilters'
 
 const SearchPageContent = () => {
   const classes = useStyles()
@@ -13,10 +14,10 @@ const SearchPageContent = () => {
       <GeneralConsumer>{({loading, developersList, page, itemsPerPage, noOfPages, handlePaginationChange}) => (
         <Container maxWidth={false}>
           <Grid container spacing={2} justify={'space-between'}>
-            <Grid item xs={12} sm={12} md={3}>
-              Filters
+            <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
+              <SearchFilters/>
             </Grid>
-            <Grid item xs={12} sm={12} md={9}>
+            <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
               <h1>Top full-stack developers in United Stats</h1>
               {!!loading && <SearchLoader/>}
               {developersList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((developer) => (

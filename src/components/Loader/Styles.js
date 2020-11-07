@@ -53,6 +53,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     position: 'relative',
     zIndex: 999,
-    height: 300
+    height: 300,
+    width: '100%'
   }
 }))

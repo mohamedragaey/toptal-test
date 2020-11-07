@@ -21,5 +21,7 @@
   "footerLinks.link.contactUs": "Contact Us",
   "footerLinks.link.pressCenter": "Press Center",
   "footerLinks.link.careers": "Careers",
-  "DeveloperCard.Button.viewProfile": "View Profile"
+  "DeveloperCard.Button.viewProfile": "View Profile",
+  "AccordionSummary.heading.DeveloperType": "Developer Type:",
+  "AccordionSummary.heading.Skills": "Skills:"
 }
