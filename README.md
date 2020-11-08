@@ -3,6 +3,9 @@
 UI Search
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+## Live preview
+[https://ui-search.netlify.app/](https://ui-search.netlify.app/)
+
 ## Before you start
 To start development on this project you need to have node installed on your system.you can download nvm from here [nvm](https://github.com/nvm-sh/nvm) it will help you manage your node versions.
 * Node version ^14.8.0
