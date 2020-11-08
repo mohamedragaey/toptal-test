@@ -3,6 +3,7 @@ import {Container, Grid, AppBar, Toolbar} from '@material-ui/core'
 import {useStyles} from './Styles'
 import Logo from '../Logo'
 import HeaderLinks from '../HeaderLinks'
+import SearchBar from './SearchBar'
 
 const Header = () => {
   const classes = useStyles()
@@ -17,6 +18,7 @@ const Header = () => {
           </Grid>
         </Container>
       </Toolbar>
+      <SearchBar/>
     </AppBar>
   )
 }

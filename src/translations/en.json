@@ -24,5 +24,8 @@
   "DeveloperCard.Button.viewProfile": "View Profile",
   "AccordionSummary.heading.DeveloperType": "Developer Type:",
   "AccordionSummary.heading.Skills": "Skills:",
-  "NoResultsFound": "No Results Found"
+  "NoResultsFound": "No Results Found",
+  "Breadcrumbs.Link.home": "Home",
+  "Breadcrumbs.Link.whyThree": "Why Top 3%",
+  "Breadcrumbs.Link.findDevelopers": "Find Developers"
 }
