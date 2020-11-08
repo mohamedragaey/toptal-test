@@ -3,11 +3,11 @@ import {useStyles} from './Styles'
 import {Container, Grid} from '@material-ui/core'
 import MainBreadcrumbs from '../MainBreadcrumbs'
 
-const SearchBar = () => {
+const BottomHeader = () => {
   const classes = useStyles()
 
   return (
-    <section className={classes.searchBarWrapper}>
+    <section className={classes.bottomHeaderWrapper}>
       <Container maxWidth={false}>
         <Grid container alignItems='center'>
           <Grid item xs={12} sm={12} md={6}>
@@ -21,4 +21,4 @@ const SearchBar = () => {
     </section>
   )
 }
-export default SearchBar
+export default BottomHeader
