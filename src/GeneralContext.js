@@ -15,6 +15,8 @@ const GeneralProvider = ({children}) => {
   const [developersSkillsCheck, setDevelopersSkillsCheck] = React.useState([])
   const [filteredSkillsList, setFilteredSkillsList] = React.useState([])
   const [page, setPage] = React.useState(1)
+  const [selectedMenuItem, setSelectedMenuItem] = React.useState('Frontend developer')
+  const [searchKeyword, setSearchKeyword] = React.useState('')
   const itemsPerPage = 10
   const [noOfPages, setNoOfPages] = React.useState(Math.ceil(filteredSkillsList.length / itemsPerPage))
 
@@ -96,6 +98,27 @@ const GeneralProvider = ({children}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [developersSkillsCheck])
 
+  const handleSearchBarSubmit = () => {
+    setLoading(true)
+    setPage(0)
+    // @TODO Filter list based on keyword
+  }
+
+  const handleSearchInputChange = (event) => {
+    setSearchKeyword(event.target.value)
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.which === 13) {
+      handleSearchBarSubmit()
+    }
+  }
+
+  const handleSelectedMenuItem = (title) => {
+    setSelectedMenuItem(title)
+    console.log(title)
+  }
+
   return (
     <GeneralContext.Provider value={{
       loading,
@@ -111,9 +134,15 @@ const GeneralProvider = ({children}) => {
       developersTypesCheck,
       developersSkillsCheck,
       filteredSkillsList,
+      searchKeyword,
+      selectedMenuItem,
       handlePaginationChange,
       handleDevelopersTypesChange,
-      handleDevelopersSkillsChange
+      handleSelectedMenuItem,
+      handleDevelopersSkillsChange,
+      handleSearchInputChange,
+      handleKeyPress,
+      handleSearchBarSubmit
     }}>
       {children}
     </GeneralContext.Provider>

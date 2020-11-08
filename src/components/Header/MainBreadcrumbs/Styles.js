@@ -7,7 +7,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     '& .MuiBreadcrumbs-ol': {
       [theme.breakpoints.down('sm')]: {
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: theme.spacing(1)
       }
     },
     '& .MuiBreadcrumbs-li': {

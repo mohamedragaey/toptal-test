@@ -66,6 +66,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     flex: '1 1 auto',
-    paddingTop: theme.spacing(13.75)
+    paddingTop: theme.spacing(16),
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: theme.spacing(20)
+    }
   }
 }))

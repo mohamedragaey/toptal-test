@@ -27,5 +27,7 @@
   "NoResultsFound": "No Results Found",
   "Breadcrumbs.Link.home": "Home",
   "Breadcrumbs.Link.whyThree": "Why Top 3%",
-  "Breadcrumbs.Link.findDevelopers": "Find Developers"
+  "Breadcrumbs.Link.findDevelopers": "Find Developers",
+  "SearchBar.PlaceHolder": "Search by name.",
+  "SearchBar.button.search": "Search"
 }

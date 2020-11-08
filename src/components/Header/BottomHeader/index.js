@@ -2,6 +2,7 @@ import React from 'react'
 import {useStyles} from './Styles'
 import {Container, Grid} from '@material-ui/core'
 import MainBreadcrumbs from '../MainBreadcrumbs'
+import SearchBar from '../SearchBar'
 
 const BottomHeader = () => {
   const classes = useStyles()
@@ -14,7 +15,7 @@ const BottomHeader = () => {
             <MainBreadcrumbs/>
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
-            search bar
+            <SearchBar/>
           </Grid>
         </Grid>
       </Container>
