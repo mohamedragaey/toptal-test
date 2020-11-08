@@ -3,6 +3,7 @@
 UI Search
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/60519732-e073-4bf5-9e28-ab0d1b90a76a/deploy-status)](https://app.netlify.com/sites/ui-search/deploys)
 ## Live preview
 [https://ui-search.netlify.app/](https://ui-search.netlify.app/)
 
