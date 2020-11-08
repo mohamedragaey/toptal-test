@@ -1,5 +1,3 @@
-import React from 'react'
-
 /**
  * Log function works only in development and removed in production
  * @param text

@@ -93,7 +93,7 @@ const GeneralProvider = ({children}) => {
       setNoOfPages(Math.ceil(filteredSkillsList.length / itemsPerPage))
     }
     console.log('developersSkillsCheck....', developersSkillsCheck)
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [developersSkillsCheck])
 
   return (
