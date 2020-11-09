@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {IntlProvider} from 'react-intl'
 import Configuration from './Services/Api/Configuration'
+import {GeneralProvider} from './GeneralContext'
 
 let {DefaultLocale, DefaultMessage} = Configuration
 
@@ -19,9 +20,11 @@ ReactDOM.render(
       messages={DefaultMessage}
       defaultLocale={DefaultLocale}
     >
-      <ThemeProvider>
-        <Layout/>
-      </ThemeProvider>
+      <GeneralProvider>
+        <ThemeProvider>
+          <Layout/>
+        </ThemeProvider>
+      </GeneralProvider>
     </IntlProvider>
   </Router>,
   document.getElementById('root')
