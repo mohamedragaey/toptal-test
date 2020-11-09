@@ -1,11 +1,14 @@
 import React from 'react'
-import {useStyles} from './Styles'
-import LazyImage from '../LazyImage'
 import {Fade} from 'react-reveal'
-import {FormattedMessage} from 'react-intl'
 import {Button} from '@material-ui/core'
+import {NavLink} from 'react-router-dom'
+import {FormattedMessage} from 'react-intl'
+import {formatRoute} from 'react-router-named-routes'
+import {NamedRoutes} from '../../routes'
+import LazyImage from '../LazyImage'
+import {useStyles} from './Styles'
 
-const DeveloperCard = ({id, category, bio, city, country, first_name, last_name, generalBio, photoUrl, skills}) => {
+const DeveloperCard = ({id, first_name, last_name, generalBio, photoUrl, skills}) => {
   const classes = useStyles()
   return (
     <Fade bottom>
@@ -23,7 +26,8 @@ const DeveloperCard = ({id, category, bio, city, country, first_name, last_name,
               <p>{generalBio}</p>
             </div>
           </div>
-          <Button className={classes.viewProfile} variant={'outlined'}>
+          <Button className={classes.viewProfile} variant={'outlined'} component={NavLink}
+                  to={formatRoute(NamedRoutes.profile, {id: id})}>
             <FormattedMessage id='DeveloperCard.Button.viewProfile'/>
           </Button>
         </div>

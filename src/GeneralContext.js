@@ -4,7 +4,7 @@ import Configuration from './Services/Api/Configuration'
 
 const GeneralContext = createContext({})
 
-const GeneralProvider = ({children}) => {
+const GeneralProvider = ({children, id}) => {
   const [developersList, setDevelopersList] = React.useState([])
   const [loading, setLoading] = React.useState(false)
   const [developersTypes, setDevelopersTypes] = React.useState([])
@@ -19,6 +19,7 @@ const GeneralProvider = ({children}) => {
   const [searchKeyword, setSearchKeyword] = React.useState('')
   const itemsPerPage = 10
   const [noOfPages, setNoOfPages] = React.useState(Math.ceil(filteredSkillsList.length / itemsPerPage))
+  const [profileObj, setProfileObj] = React.useState({})
 
   const getSearchResult = React.useCallback(() => {
     setLoading(true)
@@ -55,6 +56,19 @@ const GeneralProvider = ({children}) => {
     getDevelopersTypes()
     getDevelopersSkills()
   }, [getSearchResult, getDevelopersTypes, getDevelopersSkills])
+
+  React.useEffect(() => {
+    if (!!id) {
+      setLoading(true)
+      if (!!developersList.length) {
+        let arr = developersList.filter((item) => {
+          return id.indexOf(item.id) !== -1
+        })
+        setProfileObj(arr[0])
+        setLoading(false)
+      }
+    }
+  }, [id, developersList])
 
   const handlePaginationChange = (event, value) => {
     setPage(value)
@@ -136,6 +150,7 @@ const GeneralProvider = ({children}) => {
       filteredSkillsList,
       searchKeyword,
       selectedMenuItem,
+      profileObj,
       handlePaginationChange,
       handleDevelopersTypesChange,
       handleSelectedMenuItem,
