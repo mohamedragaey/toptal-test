@@ -2,6 +2,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 export const useStyles = makeStyles((theme) => ({
   footerWrapper: {
+    marginTop: theme.spacing(4),
     borderTop: `1px solid ${theme.palette.grey[300]}`
   },
   footerContent: {
