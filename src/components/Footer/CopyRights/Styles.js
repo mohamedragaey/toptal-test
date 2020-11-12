@@ -30,14 +30,18 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     '& a': {
+      width: 30,
+      height: 30,
       display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       padding: theme.spacing(0.5),
       color: theme.palette.common.white,
       background: theme.palette.action.active,
       '&:not(:last-of-type)': {
         marginRight: theme.spacing(0.5)
       },
-      '& .MuiSvgIcon-root': {
+      '& [class^="icon-"]:before, [class*=" icon-"]:before': {
         fontSize: theme.typography.pxToRem(18)
       }
     }
