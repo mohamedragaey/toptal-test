@@ -8,11 +8,15 @@ export const useStyles = makeStyles((theme) => ({
   profilePageContentTitle: {
     lineHeight: 1,
     marginBottom: 0,
-    fontSize: theme.typography.pxToRem(40)
+    fontSize: theme.typography.pxToRem(40),
+    [theme.breakpoints.down('xs')]: {
+      fontSize: theme.typography.pxToRem(30)
+    }
   },
   profilePageContentSubTitle: {
     display: 'flex',
     alignItems: 'center',
+    flexWrap: 'wrap',
     color: theme.palette.grey[400],
     '& .MuiSvgIcon-root': {
       fontSize: theme.typography.pxToRem(14),
@@ -28,6 +32,18 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(4),
     '& .lazy-load-image-background.blur': {
       flex: '1 0 auto'
+    },
+    [theme.breakpoints.down('xs')]: {
+      alignItems: 'center',
+      flexDirection: 'column',
+      '& .lazy-load-image-background.blur': {
+        marginBottom: theme.spacing(2)
+      }
+    }
+  },
+  order: {
+    [theme.breakpoints.down('sm')]: {
+      order: -1
     }
   },
   profilePageContentBio: {
@@ -58,10 +74,19 @@ export const useStyles = makeStyles((theme) => ({
     '& .MuiButton-label': {
       display: 'flex',
       flexDirection: 'column'
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: theme.spacing(1),
+      '& .MuiButton-label': {
+        flexDirection: 'row'
+      }
     }
   },
+  borderRight: {
+    borderRight: `1px solid ${theme.palette.grey[300]}`
+  },
   canHelpYouWith: {
-    borderLeft: `1px solid ${theme.palette.grey[300]}`,
+
     '& ul': {
       paddingLeft: theme.spacing(2)
     },

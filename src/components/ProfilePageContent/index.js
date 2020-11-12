@@ -1,14 +1,28 @@
 import React from 'react'
-import {Container, Grid} from '@material-ui/core'
-import {useStyles} from './Styles'
-import {SearchLoader} from '../Loader/SearchLoader'
-import RoomIcon from '@material-ui/icons/Room'
-import LazyImage from '../LazyImage'
 import {FormattedMessage} from 'react-intl'
+import {Container, Grid} from '@material-ui/core'
+import {SearchLoader} from '../Loader/SearchLoader'
+import CanHelpYouWith from './parts/CanHelpYouWith'
+import PersonalInfo from './parts/PersonalInfo'
+import Experience from './parts/Experience'
 import FormDialog from './FormDialog'
+import {useStyles} from './Styles'
+import {lg} from '../../utils/ResponsiveUtility'
 
 const ProfilePageContent = ({profileObj, loading}) => {
   const classes = useStyles()
+  let [width, setWidth] = React.useState(document.body.clientWidth)
+  let Mobile = (width < lg)
+  let DesktopAndUp = (width >= lg)
+  React.useEffect(() => {
+    const getWidth = () => {
+      setWidth(document.body.clientWidth)
+    }
+    window.addEventListener('resize', getWidth)
+    return () => {
+      window.removeEventListener('resize', getWidth)
+    }
+  }, [width])
 
   return (
     <section className={classes.paper}>
@@ -16,68 +30,20 @@ const ProfilePageContent = ({profileObj, loading}) => {
         {!!loading && <SearchLoader/>}
         {!!Object.keys(profileObj).length &&
         <Grid container spacing={6} justify={'space-between'}>
-          <Grid item xs={12} md={10}>
-            <div className={classes.profilePageContentWrapper}>
-              <h1 className={classes.profilePageContentTitle}>{`${profileObj.first_name} ${profileObj.last_name}`}</h1>
-              <div className={classes.profilePageContentSubTitle}>
-                {`${profileObj.skills[0].title}, ${profileObj.category}`}
-                <RoomIcon/>{`${profileObj.city}, ${profileObj.country}`}
-              </div>
-              <div className={classes.profilePageContentDescription}>
-                <LazyImage src={profileObj.photoUrl} alt={profileObj.first_name} width={100} height={100}/>
-                <div className={classes.profilePageContentBio}>
-                  <p>{profileObj.bio.replace(/^\s+|\s+$/gm, '')}</p>
-                </div>
-              </div>
-              <Grid container spacing={4} justify={'space-between'}>
-                <Grid item xs={12} md={9}>
-                  <h2 className={classes.experienceTitle}><FormattedMessage id='ProfilePageContent.experience'/></h2>
-                  <div className={classes.experienceItem}>
-                    <h2 className={classes.experienceTitle}>
-                      <FormattedMessage id='ProfilePageContent.experienceItem1.title'/>
-                    </h2>
-                    <ul>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem1.item1'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem1.item2'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem1.item3'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem1.item4'/></li>
-                      <span><FormattedMessage id='ProfilePageContent.experienceItem1.item5'/></span>
-                    </ul>
-                  </div>
-                  <div className={classes.experienceItem}>
-                    <h2 className={classes.experienceTitle}>
-                      <FormattedMessage id='ProfilePageContent.experienceItem2.title'/>
-                    </h2>
-                    <ul>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem2.item1'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem2.item2'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem2.item3'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem2.item4'/></li>
-                      <li><FormattedMessage id='ProfilePageContent.experienceItem2.item5'/></li>
-                      <span><FormattedMessage id='ProfilePageContent.experienceItem2.item6'/></span>
-                    </ul>
-                  </div>
-                </Grid>
-                <Grid item xs={12} md={3} className={classes.canHelpYouWith}>
-                  <h3><FormattedMessage id='ProfilePageContent.canHelpYouWith.title'
-                                        values={{name: profileObj.first_name}}/></h3>
-                  <ul>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item1'/></li>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item2'/></li>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item3'/></li>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item4'/></li>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item5'/></li>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item6'/></li>
-                    <li><FormattedMessage id='ProfilePageContent.canHelpYouWith.item7'/></li>
-                  </ul>
-                </Grid>
+          <Grid item xs={12} md={12} lg={10}>
+            <PersonalInfo profileObj={profileObj}/>
+            <Grid container spacing={4} justify={'space-between'}>
+              <Grid item xs={12} md={8} lg={9} className={classes.borderRight}><Experience/></Grid>
+              <Grid item xs={12} md={4} lg={3} className={classes.order}>
+                {Mobile && <FormDialog/>}
+                <CanHelpYouWith profileObj={profileObj}/>
               </Grid>
-            </div>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={2} className={classes.contactOptionsWrapper}>
+          {DesktopAndUp && <Grid item xs={12} lg={2} className={classes.contactOptionsWrapper}>
             <h2 className={classes.contactOptionsTitle}><FormattedMessage id='ContactOptions.title'/></h2>
             <FormDialog/>
-          </Grid>
+          </Grid>}
         </Grid>
         }
       </Container>
