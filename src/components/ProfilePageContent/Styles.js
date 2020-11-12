@@ -82,6 +82,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   experienceTitle: {},
   experienceItem: {
+    '& ul': {
+      paddingLeft: theme.spacing(2)
+    },
     '& li': {
       position: 'relative',
       listStyle: 'none',
