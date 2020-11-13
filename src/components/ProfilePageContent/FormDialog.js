@@ -7,7 +7,7 @@ import Dialog from '@material-ui/core/Dialog'
 import ReCAPTCHA from 'react-google-recaptcha'
 import CloseIcon from '@material-ui/icons/Close'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import {IconButton, InputAdornment, TextField} from '@material-ui/core'
+import {FormHelperText, IconButton, InputAdornment, TextField} from '@material-ui/core'
 import GroupWorkIcon from '@material-ui/icons/GroupWork'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -164,6 +164,9 @@ const FormDialog = ({profileObj}) => {
                 <ReCAPTCHA sitekey="6Lc-TuIZAAAAADoN_6pSBBDXJlndyQG3wvQuwqMa"
                            onChange={(value) => contactForm.setFieldValue('reCaptcha', value)}
                 />
+                {contactForm.errors.reCaptcha && contactForm.touched.reCaptcha && (
+                  <FormHelperText error={true}>{contactForm.errors.reCaptcha}</FormHelperText>
+                )}
               </div>
             </div>
           </DialogContent>

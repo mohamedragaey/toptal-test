@@ -159,6 +159,7 @@ export const useStyles = makeStyles((theme) => ({
       backgroundColor: '#f9f9f9',
       display: 'flex',
       alignItems: 'center',
+      flexDirection: 'column',
       padding: theme.spacing(2),
       border: `1px solid #ccc`
     }
