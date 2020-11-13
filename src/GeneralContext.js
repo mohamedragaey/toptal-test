@@ -101,16 +101,12 @@ const GeneralProvider = ({children, id}) => {
   React.useEffect(() => {
     if (developersSkillsCheck.length === 0 || developersSkillsCheck.length === (developersSkills.length + developersTypes.length)) {
       setFilteredSkillsList(developersList)
-      noOfPages = (Math.ceil(filteredSkillsList.length / itemsPerPage))
     } else {
       setFilteredSkillsList(developersList.filter((item => (
         developersSkillsCheck.includes(item.skills[0].title) || developersSkillsCheck.includes(item.category)
       ))))
-      noOfPages = (Math.ceil(filteredSkillsList.length / itemsPerPage))
     }
-    console.log('developersSkillsCheck....', developersSkillsCheck)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [developersSkillsCheck, developersList])
+  }, [developersSkillsCheck, developersList, developersSkills, developersTypes])
 
   const handleSearchBarSubmit = () => {
     setLoading(true)
