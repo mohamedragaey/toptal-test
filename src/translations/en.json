@@ -53,5 +53,8 @@
   "ProfilePageContent.canHelpYouWith.item4": "C++ development",
   "ProfilePageContent.canHelpYouWith.item5": "Parse.com",
   "ProfilePageContent.canHelpYouWith.item6": "Swift",
-  "ProfilePageContent.canHelpYouWith.item7": "REST API architecture"
+  "ProfilePageContent.canHelpYouWith.item7": "REST API architecture",
+  "validationSchema.required": "This field is required.",
+  "validationSchema.reCaptcha": "Please refresh the page the reCaptcha is invalid.",
+  "validationSchema.validEmail": "Please entre a valid email address."
 }

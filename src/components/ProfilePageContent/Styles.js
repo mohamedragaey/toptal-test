@@ -65,7 +65,26 @@ export const useStyles = makeStyles((theme) => ({
   contactOptionsTitle: {
     fontSize: theme.typography.pxToRem(18)
   },
-  closeButton: {},
+  closeButton: {
+    padding: 0,
+    fontSize: theme.typography.pxToRem(12),
+    color: theme.palette.grey[300],
+    '& .MuiSvgIcon-root': {
+      fontSize: theme.typography.pxToRem(20)
+    }
+  },
+  dialogActions: {
+    padding: theme.spacing(2, 3),
+    marginTop: theme.spacing(2),
+    borderTop: `1px solid ${theme.palette.grey[300]}`,
+    '& .MuiButton-containedPrimary': {
+      color: theme.palette.common.white,
+      textTransform: 'capitalize'
+    },
+    '& .MuiButton-outlinedPrimary': {
+      textTransform: 'capitalize'
+    }
+  },
   formDialogButton: {
     textTransform: 'capitalize',
     width: '100%',
@@ -123,5 +142,49 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(20)
       }
     }
+  },
+  formWrapper: {
+    '& .MuiFormControl-fullWidth': {
+      [theme.breakpoints.up('sm')]: {
+        minWidth: 338
+      }
+    },
+    '& .MuiOutlinedInput-root': {
+      borderRadius: 0
+    }
+  },
+  reCaptchaWrapper: {
+    [theme.breakpoints.up('sm')]: {
+      marginTop: theme.spacing(1.5),
+      backgroundColor: '#f9f9f9',
+      display: 'flex',
+      alignItems: 'center',
+      padding: theme.spacing(2),
+      border: `1px solid #ccc`
+    }
+  },
+  row: {
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      alignItems: 'flex-start'
+    }
+  },
+  marginRight: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: theme.spacing(4)
+    }
+  },
+  dialogHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: `1px solid ${theme.palette.grey[300]}`
+  },
+  DialogTitleHint: {
+    color: '#92929d'
+  },
+  DialogTitle: {
+    margin: 0,
+    lineHeight: 1
   }
 }))

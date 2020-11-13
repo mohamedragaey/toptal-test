@@ -35,14 +35,14 @@ const ProfilePageContent = ({profileObj, loading}) => {
             <Grid container spacing={4} justify={'space-between'}>
               <Grid item xs={12} md={8} lg={9} className={classes.borderRight}><Experience/></Grid>
               <Grid item xs={12} md={4} lg={3} className={classes.order}>
-                {Mobile && <FormDialog/>}
+                {Mobile && <FormDialog profileObj={profileObj}/>}
                 <CanHelpYouWith profileObj={profileObj}/>
               </Grid>
             </Grid>
           </Grid>
           {DesktopAndUp && <Grid item xs={12} lg={2} className={classes.contactOptionsWrapper}>
             <h2 className={classes.contactOptionsTitle}><FormattedMessage id='ContactOptions.title'/></h2>
-            <FormDialog/>
+            <FormDialog profileObj={profileObj}/>
           </Grid>}
         </Grid>
         }

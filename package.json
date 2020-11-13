@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "axios": "^0.21.0",
+    "formik": "^2.2.5",
     "js-cookie": "^2.2.1",
     "jss": "^10.4.0",
     "jss-rtl": "^0.3.0",
@@ -18,8 +19,9 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-cookie-consent": "^6.1.0",
     "react-dom": "^17.0.1",
+    "react-google-recaptcha": "^2.1.0",
     "react-helmet": "^6.1.0",
-    "react-intl": "^5.10.0",
+    "react-intl": "^5.10.1",
     "react-jss": "^10.4.0",
     "react-lazy-load-image-component": "^1.5.0",
     "react-load-script": "^0.0.6",
@@ -27,7 +29,8 @@
     "react-router-dom": "^5.2.0",
     "react-router-named-routes": "^0.0.23",
     "react-scripts": "4.0.0",
-    "react-spinners-kit": "^1.9.1"
+    "react-spinners-kit": "^1.9.1",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
