@@ -18,7 +18,7 @@ const GeneralProvider = ({children, id}) => {
   const [selectedMenuItem, setSelectedMenuItem] = React.useState('Frontend developer')
   const [searchKeyword, setSearchKeyword] = React.useState('')
   const itemsPerPage = 10
-  const [noOfPages, setNoOfPages] = React.useState(Math.ceil(filteredSkillsList.length / itemsPerPage))
+  let noOfPages = Math.ceil(filteredSkillsList.length / itemsPerPage)
   const [profileObj, setProfileObj] = React.useState({})
 
   const getSearchResult = React.useCallback(() => {
@@ -101,16 +101,16 @@ const GeneralProvider = ({children, id}) => {
   React.useEffect(() => {
     if (developersSkillsCheck.length === 0 || developersSkillsCheck.length === (developersSkills.length + developersTypes.length)) {
       setFilteredSkillsList(developersList)
-      setNoOfPages(Math.ceil(filteredSkillsList.length / itemsPerPage))
+      noOfPages = (Math.ceil(filteredSkillsList.length / itemsPerPage))
     } else {
       setFilteredSkillsList(developersList.filter((item => (
         developersSkillsCheck.includes(item.skills[0].title) || developersSkillsCheck.includes(item.category)
       ))))
-      setNoOfPages(Math.ceil(filteredSkillsList.length / itemsPerPage))
+      noOfPages = (Math.ceil(filteredSkillsList.length / itemsPerPage))
     }
     console.log('developersSkillsCheck....', developersSkillsCheck)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [developersSkillsCheck])
+  }, [developersSkillsCheck, developersList])
 
   const handleSearchBarSubmit = () => {
     setLoading(true)
@@ -130,7 +130,6 @@ const GeneralProvider = ({children, id}) => {
 
   const handleSelectedMenuItem = (title) => {
     setSelectedMenuItem(title)
-    console.log(title)
   }
 
   return (
