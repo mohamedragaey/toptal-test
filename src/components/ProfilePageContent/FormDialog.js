@@ -15,6 +15,7 @@ import {ContactFormValidation} from '../../utils/validationSchema'
 import {FormLoader} from '../Loader/FormLoader'
 import {useStyles} from './Styles'
 import {AccountCircle} from '@material-ui/icons'
+import Alert from '@material-ui/lab/Alert'
 
 const Transition = React.forwardRef(function Transition (props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -23,6 +24,11 @@ const Transition = React.forwardRef(function Transition (props, ref) {
 const FormDialog = ({profileObj}) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
+  const [success, setSuccess] = React.useState(false)
+
+  React.useEffect(() => {
+    setSuccess(false)
+  }, [])
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -30,6 +36,7 @@ const FormDialog = ({profileObj}) => {
 
   const handleClose = () => {
     setOpen(false)
+    setSuccess(false)
   }
 
   const contactForm = useFormik({
@@ -47,12 +54,8 @@ const FormDialog = ({profileObj}) => {
     onSubmit: ((values, actions) => {
       setTimeout(() => {
         actions.setSubmitting(false)
-        actions.setFieldValue('firstName', '')
-        actions.setFieldValue('lastName', '')
-        actions.setFieldValue('email', '')
-        actions.setFieldValue('message', '')
-        actions.setFieldValue('reCaptcha', '')
-        handleClose()
+        actions.resetForm()
+        setSuccess(true)
       }, 3000)
     })
   })
@@ -72,6 +75,7 @@ const FormDialog = ({profileObj}) => {
         aria-describedby="form-dialog-slide-description"
       >
         <form onSubmit={contactForm.handleSubmit} noValidate autoComplete="off" className={classes.formWrapper}>
+          {!!success && <Alert severity="success">Form sent successfully</Alert>}
           <DialogTitle id="form-dialog-slide-title" className={classes.dialogHeader} disableTypography={true}>
             <div>
               <span className={classes.DialogTitleHint}>Contact</span>
