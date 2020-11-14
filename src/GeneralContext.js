@@ -94,8 +94,11 @@ const GeneralProvider = ({children}) => {
     if (developersSkillsCheck.length === 0 || developersSkillsCheck.length === (developersSkills.length + developersTypes.length)) {
       setFilteredSkillsList(developersList)
     } else {
+      setPage(1)
       setFilteredSkillsList(developersList.filter((item => (
-        developersSkillsCheck.includes(item.skills[0].title) || developersSkillsCheck.includes(item.category)
+        developersSkillsCheck.includes(item.skills[0].title)
+        || developersSkillsCheck.includes(item.skills.slice(-1)[0].title)
+        || developersSkillsCheck.includes(item.category)
       ))))
     }
   }, [developersSkillsCheck, developersList, developersSkills, developersTypes])
