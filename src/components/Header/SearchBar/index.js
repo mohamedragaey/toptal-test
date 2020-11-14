@@ -18,7 +18,7 @@ const SearchBar = () => {
             <TextField
               placeholder={intl.formatMessage({id: 'SearchBar.PlaceHolder'})}
               id="searchKeyword"
-              type={'text'}
+              type={'search'}
               margin="dense"
               variant="outlined"
               value={searchKeyword}

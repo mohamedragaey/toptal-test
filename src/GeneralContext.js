@@ -11,7 +11,6 @@ const GeneralProvider = ({children, id}) => {
   const [developersTypesLoading, setDevelopersTypesLoading] = React.useState(false)
   const [developersSkills, setDevelopersSkills] = React.useState([])
   const [developersSkillsLoading, setDevelopersSkillsLoading] = React.useState(false)
-  const [developersTypesCheck, setDevelopersTypesCheck] = React.useState([])
   const [developersSkillsCheck, setDevelopersSkillsCheck] = React.useState([])
   const [filteredSkillsList, setFilteredSkillsList] = React.useState([])
   const [page, setPage] = React.useState(1)
@@ -75,18 +74,6 @@ const GeneralProvider = ({children, id}) => {
     window.scrollTo(0, 0)
   }
 
-  const handleDevelopersTypesChange = (title) => {
-    if (developersTypesCheck.includes(title)) {
-      const filterIndex = developersTypesCheck.indexOf(title)
-      const newFilter = [...developersTypesCheck]
-      newFilter.splice(filterIndex, 1)
-      setDevelopersTypesCheck(newFilter)
-    } else {
-      setDevelopersTypesCheck([...developersTypesCheck, title])
-    }
-
-  }
-
   const handleDevelopersSkillsChange = (title) => {
     if (developersSkillsCheck.includes(title)) {
       const filterIndex = developersSkillsCheck.indexOf(title)
@@ -140,14 +127,12 @@ const GeneralProvider = ({children, id}) => {
       developersSkills,
       developersTypesLoading,
       developersSkillsLoading,
-      developersTypesCheck,
       developersSkillsCheck,
       filteredSkillsList,
       searchKeyword,
       selectedMenuItem,
       profileObj,
       handlePaginationChange,
-      handleDevelopersTypesChange,
       handleSelectedMenuItem,
       handleDevelopersSkillsChange,
       handleSearchInputChange,
