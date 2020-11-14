@@ -50,9 +50,11 @@ const DeveloperTypesMenu = ({developersTypes, handleSelectedMenuItem, selectedMe
         onClose={handleClose}
       >
         {developersTypes.map((type) => (
-          <MenuItem key={type.id} onClick={() => handleSelectedMenuItem(type.title)}>{type.title}</MenuItem>
+          <MenuItem key={type.id} onClick={() => {
+            handleSelectedMenuItem(type.title)
+            setAnchorEl(null)
+          }}>{type.title}</MenuItem>
         ))}
-
       </StyledMenu>
     </>
   )
