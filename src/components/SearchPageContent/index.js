@@ -11,14 +11,14 @@ import {useStyles} from './Styles'
 const SearchPageContent = () => {
   const classes = useStyles()
   return (
-    <GeneralConsumer>{({loading, page, itemsPerPage, noOfPages, handlePaginationChange, filteredSkillsList}) => (
+    <GeneralConsumer>{({loading, page, itemsPerPage, noOfPages, handlePaginationChange, filteredSkillsList, selectedMenuItem, searchKeyword}) => (
       <Container maxWidth={false}>
         <Grid container spacing={2} justify={'space-between'}>
           <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
             <SearchFilters/>
           </Grid>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
-            <h1>Top full-stack developers in United Stats</h1>
+            <h1>{`Top ${selectedMenuItem}s ${!!searchKeyword ? `in ${searchKeyword}` : ''}`}</h1>
             {!!loading && <SearchLoader/>}
             {!!filteredSkillsList && !!filteredSkillsList.length && filteredSkillsList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((developer) => (
               <DeveloperCard
