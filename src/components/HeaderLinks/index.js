@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {Button} from '@material-ui/core'
 import {useStyles} from './Styles'
@@ -9,10 +10,10 @@ const HeaderLinks = () => {
 
   return (
     <section className={classes.headerLinks}>
-      <a href='https://google.com' className={classes.headerLink}>
+      <a href='#' className={classes.headerLink}>
         <FormattedMessage id='HeaderLinks.link.findDevelopers'/>
       </a>
-      <a href='https://google.com' className={classes.headerLink}>
+      <a href='#' className={classes.headerLink}>
         <FormattedMessage id='HeaderLinks.link.Resources'/>
       </a>
       <Button className={classes.signUpButton} variant={'outlined'}>

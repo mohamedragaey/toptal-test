@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {FormattedMessage} from 'react-intl'
 import {Container, Grid} from '@material-ui/core'
@@ -16,22 +17,22 @@ const Footer = () => {
             <FooterColumn
               title={<FormattedMessage id='Footer.FooterColumn.title.highestDemandTalents'/>}
               content={<>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.iosDeveloper'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.frontEndDeveloper'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.UXDesigner'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.UIDesigner'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.financialModelingConsultants'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.interimCFOs'/>
                 </a>
               </>}
@@ -42,13 +43,13 @@ const Footer = () => {
             <FooterColumn
               title={<FormattedMessage id='Footer.FooterColumn.title.about'/>}
               content={<>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.contactUs'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.pressCenter'/>
                 </a>
-                <a href='https://google.com' className={classes.footerLink}>
+                <a href='#' className={classes.footerLink}>
                   <FormattedMessage id='footerLinks.link.careers'/>
                 </a>
               </>}
