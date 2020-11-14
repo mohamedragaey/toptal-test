@@ -9,6 +9,6 @@
     "title": "Profile page",
     "image": "/public/logo.png",
     "description": "UI search",
-    "schema": "/profile"
+    "schema": "/talent/{id}/profile"
   }
 }

@@ -1,18 +1,20 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
 import ProfilePageContent from '../../components/ProfilePageContent'
-import {GeneralConsumer, GeneralProvider} from '../../GeneralContext'
+import {SEO} from '../../components/Seo/seo'
+import {profile} from '../../utils/pages-meta.json'
+import {NamedRoutes} from '../../routes'
 
 const Profile = () => {
-  let {id} = useParams()
-
   return (
-    <GeneralProvider id={id}>
-      <GeneralConsumer>{({profileObj, loading}) => (
-        <ProfilePageContent profileObj={profileObj} loading={loading}/>
-      )}
-      </GeneralConsumer>
-    </GeneralProvider>
+    <>
+      <SEO title={profile.title}
+           pathname={window.location.origin + NamedRoutes.profile}
+           titleTemplate='UI Search'
+           image={profile.image}
+           description={profile.description}
+      />
+      <ProfilePageContent/>
+    </>
   )
 }
 

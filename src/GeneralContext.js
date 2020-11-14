@@ -1,10 +1,14 @@
 import React, {createContext} from 'react'
+import {useHistory, useLocation} from 'react-router-dom'
 import SearchServices from './Services/Consumers/SearchServices'
 import Configuration from './Services/Api/Configuration'
+import countries from './utils/countries.json'
 
 const GeneralContext = createContext({})
 
-const GeneralProvider = ({children, id}) => {
+const GeneralProvider = ({children}) => {
+  let location = useLocation()
+  let history = useHistory()
   const [developersList, setDevelopersList] = React.useState([])
   const [loading, setLoading] = React.useState(false)
   const [developersTypes, setDevelopersTypes] = React.useState([])
@@ -57,17 +61,18 @@ const GeneralProvider = ({children, id}) => {
   }, [getSearchResult, getDevelopersTypes, getDevelopersSkills])
 
   React.useEffect(() => {
+    let id = location.pathname.match(/talent\/(\d+)/) && location.pathname.match(/talent\/(\d+)/)[1]
     if (!!id) {
       setLoading(true)
       if (!!developersList.length) {
         let arr = developersList.filter((item) => {
           return id.indexOf(item.id) !== -1
         })
-        setProfileObj(arr[0])
+        setProfileObj(arr.slice(-1)[0])
         setLoading(false)
       }
     }
-  }, [id, developersList])
+  }, [location.pathname, developersList])
 
   const handlePaginationChange = (event, value) => {
     setPage(value)
@@ -95,14 +100,30 @@ const GeneralProvider = ({children, id}) => {
     }
   }, [developersSkillsCheck, developersList, developersSkills, developersTypes])
 
+  /**
+   * Function to check if the search keyword is cleared
+   * If so it should remove all the filters criteria and show the original list
+   */
+  React.useEffect(() => {
+    if (!searchKeyword && !!selectedMenuItem) {
+      setFilteredSkillsList(developersList)
+    }
+  }, [searchKeyword, selectedMenuItem, developersList])
+
+  /**
+   * Handler triggered when the user click on the search button in the search bar located in the page header
+   */
   const handleSearchBarSubmit = () => {
-    setLoading(true)
-    setPage(0)
-    // @TODO Filter list based on keyword
+    if (!!searchKeyword) {
+      if (location.pathname !== '/') {
+        history.push('/')
+      }
+      setFilteredSkillsList(developersList.filter((item => (selectedMenuItem === (item.category) && searchKeyword === (item.country)))))
+    }
   }
 
-  const handleSearchInputChange = (event) => {
-    setSearchKeyword(event.target.value)
+  const handleSearchInputChange = (event, values) => {
+    setSearchKeyword(values)
   }
 
   const handleKeyPress = (e) => {
@@ -132,6 +153,7 @@ const GeneralProvider = ({children, id}) => {
       searchKeyword,
       selectedMenuItem,
       profileObj,
+      countries,
       handlePaginationChange,
       handleSelectedMenuItem,
       handleDevelopersSkillsChange,

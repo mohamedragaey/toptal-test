@@ -57,6 +57,9 @@ export const useStyles = makeStyles((theme) => ({
     '.MuiPaginationItem-page:hover': {
       color: theme.palette.common.white,
       backgroundColor: theme.palette.primary.main
+    },
+    '.MuiAutocomplete-option[data-focus="true"]': {
+      color: theme.palette.common.white
     }
   },
   pageWrapper: {
