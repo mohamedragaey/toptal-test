@@ -34,9 +34,10 @@ const FormDialog = ({profileObj}) => {
     setOpen(true)
   }
 
-  const handleClose = () => {
+  const handleClose = (formActions) => {
     setOpen(false)
     setSuccess(false)
+    formActions.resetForm()
   }
 
   const contactForm = useFormik({
@@ -171,7 +172,7 @@ const FormDialog = ({profileObj}) => {
             </div>
           </DialogContent>
           <DialogActions className={classes.dialogActions}>
-            <Button onClick={handleClose} color="primary" variant='outlined'>
+            <Button onClick={() => handleClose(contactForm)} color="primary" variant='outlined'>
               cancel
             </Button>
             <Button type='submit' color="primary" variant='contained'>

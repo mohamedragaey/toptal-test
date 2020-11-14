@@ -172,7 +172,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   marginRight: {
     [theme.breakpoints.up('sm')]: {
-      marginRight: theme.spacing(4)
+      '&.MuiFormControl-fullWidth': {
+        marginRight: theme.spacing(4)
+      }
     }
   },
   dialogHeader: {
