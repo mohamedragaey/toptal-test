@@ -1,7 +1,7 @@
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {render} from 'react-snapshot'
 import ThemeProvider from './ThemeProvider'
 import Layout from './components/Layout'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -13,7 +13,7 @@ import reportWebVitals from './reportWebVitals'
 
 let {DefaultLocale, DefaultMessage} = Configuration
 
-ReactDOM.render(
+render(
   <Router>
     <IntlProvider
       key={DefaultLocale}
